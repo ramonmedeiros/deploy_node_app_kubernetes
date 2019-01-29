@@ -6,5 +6,5 @@ build-container:
 	docker build . --tag=$(TEST_TAG)
 
 run-container: build-container
-	docker run $(TEST_TAG)
+	docker run -d $(TEST_TAG)
 
