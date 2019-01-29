@@ -10,6 +10,10 @@ The application is being dockerize with multi-stage builds, which uses node:alpi
 Sources:
 
 https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+
 https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md
+
 https://docs.docker.com/docker-hub/official_images/
+
 https://medium.com/thepeaklab/how-to-deploy-a-react-application-to-production-with-docker-multi-stage-builds-4da347f2d681
+
