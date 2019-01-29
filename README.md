@@ -21,6 +21,8 @@ https://medium.com/thepeaklab/how-to-deploy-a-react-application-to-production-wi
 
 # Kubernetes aspects
 
+I used minikube for this example. This was my guide: https://kubernetes.io/docs/setup/minikube/#quickstart
+
 For this example, a deployment was created, using only 1 replica. A NodePort service was created to expose the service, which runs on port 30000. To setup the service and deployment, run:
 
 ```$ make run-on-k8s```
