@@ -2,6 +2,6 @@ language: generic
 services:
 - docker
 before-script: 
-- make build-container
+- make run-on-travis
 script:
 - make test 
