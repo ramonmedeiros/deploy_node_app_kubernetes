@@ -1,16 +1,5 @@
 language: generic
-env:
-  matrix:
-  - DOCKER_USERNAME=ramonmedeiros
-  - secure: eWTOpRg3s5koir7Ue73kRn5QovZYF0eE9zVn71s2SWOZhu4SRJT4RGbPjU0cKIcQfecOtbUVkVJ8li+lmC9oz0RG3klmOtagclpvVP2Op0jwE9AxwObrFCJrPwR85mtSc3cG0Fp0/lwERdBtreOnkmGyH8IUqNg66oU82OYhz5U1GtnMqloftmDR7p7qK5UCOmyNc2w9mQdKRxBkhfIKoTmejyeUjem4nlrWIO3pzigsUfPALhgHPu3iW4AYjDust4QDU/1AL5KB0pB4LhbpxNfQURAHhvwAmvYVW5wOSM5I3Q8LXLykXaaL9fbjcHNi49s6hP/VBSMJn5VHh5vmisZdgN1CaVwTqz0qWlTGrk+lTekPXdSXoIQSGEZEcOghUXsNlZDtV7O/v48+vTMAOENf6SHEmdFbQTXH/Dg9D1fkI5WOXCxJxFIhmWge6HEUmE+IKIahwUSggHj5HLoTdGrJjjpZLTAy87K4bjwA2JrO+M291R1c59TvKWsnn28ojmU3S0pcsErMfwniRi1STCjU/rlg8sR9/4IWzBQuv2O4XVy/Ggre+d90Mb1q+GVKq/7eR+UR04+6jIaFDB/yArei3oeCBwJNt1ekdPv0+RhMKcqskEBFv1Dwbvnhhk6wAGzb7eGLy+Rg+95orDa5nVQ96xq75nDX6gALUYK1sUM=
 services:
 - docker
 script:
 - make build-container
-
-
-deploy:
-  provider: script
-  script: make publish-image
-  on:
-    branch: master
