@@ -9,6 +9,10 @@ The application is being dockerize with multi-stage builds, which uses node:alpi
 
 ```$ make```
 
+To run locally use the command below. It will print the url to the service:
+
+```$ make run-on-localhost```
+
 Sources:
 
 https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
