@@ -1,6 +1,13 @@
+# Docker multi-stage build
+# This build will produce a very small, that will be run in a nginx container
+# First stage build the app
+# Second stage packs into nginx
+
+# BUILD
 # this image was choosen because it's the official image in docker repo
+# alpine means that is the lightweight version
 # More reading about official images: https://docs.docker.com/docker-hub/official_images/
-FROM node:11
+FROM node:alpine as build
 
 # WORKDIR sets the PATH for next scripts, working similar to $PATH usage in linux.
 # After setting the workdir, I can call directly the scripts without using complete path 
@@ -12,17 +19,22 @@ COPY app/package.json /app
 # RUN executes scripts inside of docker image. In this case, I'm running npm install, which
 # reads package.json, a file that describes packages dependencies, instructions to run/test
 # and more actions related to the project
-RUN npm install
+RUN npm install --silent
 
 COPY app/ /app
 
-# run app
-CMD [ "npm", "start" ]
-
-# EXPOSE opens the network port of the image
-EXPOSE 3000
+# optimize for production
+RUN npm run-script build --silent
 
 
+# PRODUCTION
+FROM nginx:alpine
 
+# copy build files
+COPY --from=build /app/build /usr/share/nginx/html
 
+# expose 80 port
+EXPOSE 80
 
+# run nginx
+CMD ["nginx", "-g", "daemon off;"]
