@@ -8,6 +8,9 @@ build-container:
 run-container: build-container
 	docker run -d $(TEST_TAG)
 
+run-on-travis: build-container
+	docker run -d $(TEST_TAG) -p 30000:80
+
 publish-image:
 	$(eval COMMIT := $(shell git rev-parse --short HEAD))
 	docker tag $(TEST_TAG) ramonmedeiros/k8s_test:$(COMMIT)
@@ -22,3 +25,6 @@ run-on-k8s:
 cleanup-k8s:
 	kubectl delete service simple-app
 	kubectl delete deployment simple-app
+
+test:
+	python -m unittest discover -v tests

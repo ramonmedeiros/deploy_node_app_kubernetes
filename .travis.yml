@@ -1,5 +1,7 @@
 language: generic
 services:
 - docker
-script:
+before-script: 
 - make build-container
+script:
+- make test 
