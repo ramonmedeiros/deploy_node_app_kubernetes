@@ -13,19 +13,18 @@ FROM node:alpine as build
 # After setting the workdir, I can call directly the scripts without using complete path 
 WORKDIR /app
 
-# copies project files
+# copy project file structure
 COPY app/package.json /app
 
 # RUN executes scripts inside of docker image. In this case, I'm running npm install, which
 # reads package.json, a file that describes packages dependencies, instructions to run/test
-# and more actions related to the project
+# and more actions are describe in package.json
 RUN npm install --silent
 
 COPY app/ /app
 
 # optimize for production
 RUN npm run-script build --silent
-
 
 # PRODUCTION
 FROM nginx:alpine
