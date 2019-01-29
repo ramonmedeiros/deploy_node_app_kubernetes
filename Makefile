@@ -17,6 +17,8 @@ publish-image:
 run-on-k8s:
 	kubectl create -f simple_app_deployment.yaml
 	kubectl create -f simple_app_service.yaml
+	# TODO: search a similar command from minikube service <service> --url
+	@echo http:`kubectl cluster-info | grep "Kubernetes master" | awk '{print $6}' | cut -d: -f2`:30000
 
 cleanup-k8s:
 	kubectl delete service simple-app
