@@ -1,7 +1,11 @@
 language: generic
-
+env:
+  matrix:
+  - USERNAME=ramonmedeiros
+  - secure: Gs9ybPGEJSiXGbnKSmteMc0tAOCzx8BaPo4VIojBhpPoPp2vGoFUfiMjsdcl2bveKDmuNUcn5N00EMEc5XdDWvi0nCdwHFebhGw26e4u1OzKRLzh+FvB+W7DIGh3CFDf88FAuPWbvUZf2rWJ3M4Yl78hIQYUQ3kdq8s7Rod7HeSp6TqscxDl7FRxgPcz7Nq0aAglZmtLSrMMPkaWINW8Hz8yq9FhG0nHQOxu+laawwtOsM78yvwj4OaXN1csdla8TJSuRB5Fq1mj34hBGNm2ZbwfFnzrqQyxehxoKRrgu+R7ew6LoaEqNYh+wL+NQpZdEKy/2Wvw1Aox/4r0kLsoJbLePkTAFKVzkUlrxhLAgDuzbtqjBBKxgNfjGK/sbaqPH8WG5oHECL4O0/nA0dgQIuWMy4BJkzhzj+ybJS4ga9bs1etvmMQwj+98J5kKEJchXYcGbTad95Dfk6G12bqvxm55bsth98qq7uxQffv40DKX0ZKMpjlX8BPSm+D4dvMguroKsBxYE9tSiilz34uc0Zrhs5Cc3oCfqlnhvCMdLpRySdkff6jAZ/gJmVL3aWe3UUjhcxUBiDETAy8doZkXG12bJcLo5Ul02DHZ/vQ4BTN6RrqqgRk3LKFgxyvg1ToYWGcbrmS0rNEZCfd2xrqvrZMHPrVY0wk80Jp6ZL3eT9c=
 services:
-  - docker
-
+- docker
 script:
-  - make build-container 
+- make build-container
+- echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
+- make publish-image
