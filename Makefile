@@ -5,11 +5,9 @@ default: run-container
 build-container:
 	docker build . --tag=$(TEST_TAG)
 
-run-container: build-container
-	docker run -d $(TEST_TAG)
-
-run-on-travis: build-container
-	docker run -d $(TEST_TAG) -p 30000:80
+run-on-localhost: build-container
+	docker run -p 30000:80 -d $(TEST_TAG)
+	@echo http://localhost:30000
 
 publish-image:
 	$(eval COMMIT := $(shell git rev-parse --short HEAD))
