@@ -5,8 +5,9 @@ default: run-container
 build-container:
 	docker build . --tag=$(TEST_TAG)
 
-run-container: build-container
-	docker run -d $(TEST_TAG)
+run-on-localhost: build-container
+	docker run -p 30000:80 -d $(TEST_TAG)
+	@echo http://localhost:30000
 
 publish-image:
 	$(eval COMMIT := $(shell git rev-parse --short HEAD))
@@ -22,3 +23,6 @@ run-on-k8s:
 cleanup-k8s:
 	kubectl delete service simple-app
 	kubectl delete deployment simple-app
+
+test:
+	python -m unittest discover -v tests
