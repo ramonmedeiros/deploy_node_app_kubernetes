@@ -1,4 +1,5 @@
 # Deploying React Node application on Kubernetes
+[![Build Status](https://travis-ci.org/ramonmedeiros/deploy_node_app_kubernetes.svg?branch=master)](https://travis-ci.org/ramonmedeiros/deploy_node_app_kubernetes)
 
 This is an exercise to learn how to dockerize a simple application, and publish to kubernetes.
 
