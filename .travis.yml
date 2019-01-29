@@ -7,5 +7,5 @@ services:
 - docker
 script:
 - make build-container
-- echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
+- echo "$PASSWORD" | docker login --username "$USERNAME" --password-stdin
 - make publish-image
