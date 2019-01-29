@@ -5,11 +5,11 @@ This is an exercise to learn how to dockerize a simple application, and publish 
 
 ## Docker aspects
 
-The application is being dockerize with multi-stage builds, which uses node:alpine image to build the application and nginx:alpine to run it, resulting in a very small image of 18.3MB. To generate, just run:
+The application is being dockerize with multi-stage builds, which uses node:alpine image to build the application and nginx:alpine to run it, resulting in a very small image of 18.3MB. To just generate the image, just run:
 
 ```$ make```
 
-To run locally use the command below. It will print the url to the service:
+To run locally use the command below. It will build, run and print the url to the service:
 
 ```$ make run-on-localhost```
 
